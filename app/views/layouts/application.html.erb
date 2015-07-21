@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>HnewsCopy</title>
+  <title>Hacker News</title>
   <!-- Latest compiled and minified CSS & JS -->
   <link rel="stylesheet" media="screen" href="//netdna.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
   <script src="//code.jquery.com/jquery.js"></script>
@@ -11,8 +11,26 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+<div class="container">
+  <div class="row">
+    <h1>Hacker News</h1>
+    <div class="pull-right">
+      <% if @current_user %>
+        You are logged in as
+        <%= @current_user.email %> |
+        <%= link_to "logout", logout_path, class: "btn btn-danger btn-xs glyphicon glyphicon-remove" %>
+      <% else %>
+        <%= link_to "SignUp", signup_path, class: "btn btn-info btn-md glyphicon glyphicon-circle-arrow-right" %>
+        <%= link_to "Login", login_path, class: "btn btn-primary btn-md glyphicon glyphicon-flash" %>
 
-<%= yield %>
+      <% end %>
+
+    </div>
+  </div>
+  <div class="row">
+    <%= yield %>
+  </div>
+</div>
 
 </body>
 </html>
